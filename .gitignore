@@ -1,0 +1,11 @@
+# Node.js Modules
+node_modules
+
+# WebStorm settings
+.idea
+
+# Builded files
+build/*
+
+# For .gitkeep files to work
+!**/.gitkeep
