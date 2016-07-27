@@ -1,6 +1,7 @@
 "use strict";
 
 var usedContent = [];
+var MODULE_STORAGE = global.__ark_app__.apps;
 
 /**
  *
@@ -20,6 +21,7 @@ function InhabitModuleBase(configuration, dependencies) {
     this.configure(configuration)
         .inject(dependencies);
 
+    this.name = this.constructor.name;
     this.deferred = this.$.Deferred();
     this.content = [];
 }
@@ -95,6 +97,14 @@ InhabitModuleBase.prototype.resolve = function (data) {
     };
 
     this.deferred.resolve(data);
+};
+
+/**
+ * Static method for publishing Modules
+ * @param module
+ */
+InhabitModuleBase.publish = function (module) {
+    MODULE_STORAGE.push(module);
 };
 
 module.exports = InhabitModuleBase;
