@@ -12,7 +12,7 @@ fs.readdir(config.source, function (err, files) {
 
 function buildFile(filename) {
     var sourcepath = path.join(config.source, filename),
-        destpath = path.join(config.destination, filename);
+        destpath = path.join(config.destination, changeext(filename));
 
     console.log('Transforming file: ' + sourcepath);
     babel.transformFile(sourcepath, {}, function (err, result) {
@@ -28,4 +28,8 @@ function buildFile(filename) {
             console.log('Wrote ' + result.code.length + ' bytes to ' + destpath);
         })
     });
+}
+
+function changeext(filename) {
+    return path.basename(filename, '.es6') + '.js';
 }
