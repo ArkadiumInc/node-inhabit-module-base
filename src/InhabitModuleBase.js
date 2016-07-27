@@ -16,7 +16,7 @@ function InhabitModuleBase(configuration, dependencies) {
     this.configure(configuration)
         .inject(dependencies);
 
-    this.deferred = this.$.Deffered();
+    this.deferred = this.$.Deferred();
     this.content = [];
 }
 
