@@ -96,3 +96,5 @@ InhabitModuleBase.prototype.resolve = function (data) {
 
     this.deferred.resolve(data);
 };
+
+module.exports = InhabitModuleBase;
