@@ -31,5 +31,5 @@ function buildFile(filename) {
 }
 
 function changeext(filename) {
-    return path.basename(filename, '.es6') + '.js';
+    return path.basename(filename, path.extname(filename)) + '.js';
 }
