@@ -1,3 +1,7 @@
+"use strict";
+
+var usedContent = [];
+
 /**
  *
  * @param configuration
@@ -45,7 +49,7 @@ InhabitModuleBase.prototype.getDeliveryMethod = function () {
         deliveryParameters = this.configuration.deliveryMethod;
 
     if (typeof this[deliveryMethod] !== 'function') {
-        throw Error('No such fetchMethod: ' + deliveryMethod);
+        throw Error('No such deliveryMethod: ' + deliveryMethod);
     }
 
     return this[deliveryMethod].bind(this, deliveryParameters);
@@ -75,4 +79,20 @@ InhabitModuleBase.prototype.configure = function(configuration) {
     return this;
 };
 
-module.exports = InhabitModuleBase;
+/**
+ * Resolve data
+ *
+ * @param data
+ */
+InhabitModuleBase.prototype.resolve = function (data) {
+    data.next = function () {
+        for (var i = 0; i < data.length; i++) {
+            if (usedContent.indexOf(data[i].id) === -1) {
+                usedContent.push(data[i].id);
+                return data[i];
+            }
+        }
+    };
+
+    this.deferred.resolve(data);
+};
