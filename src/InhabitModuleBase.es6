@@ -20,7 +20,7 @@ export default class InhabitModuleBase {
         this.configure(configuration)
             .inject(dependencies);
 
-        this.deffered = this.$.Deffered();
+        this.deferred = this.$.Deffered();
         this.content = [];
     }
 
@@ -30,7 +30,7 @@ export default class InhabitModuleBase {
      */
     getContent() {
         this.fetch();
-        return this.deffered.promise();
+        return this.deferred.promise();
     }
 
     /**

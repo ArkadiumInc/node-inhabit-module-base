@@ -15,14 +15,14 @@ function buildFile(filename) {
         destpath = path.join(config.destination, changeext(filename));
 
     console.log('Transforming file: ' + sourcepath);
-    babel.transformFile(sourcepath, {}, function (err, result) {
+    babel.transformFile(sourcepath, function (err, result) {
         if (err) {
-            throw Error(err);
+            throw err;
         }
 
         fs.writeFile(destpath, result.code, function (err) {
             if (err) {
-                throw Error(err);
+                throw err;
             }
 
             console.log('Wrote ' + result.code.length + ' bytes to ' + destpath);
