@@ -4,39 +4,9 @@ var usedContent = [];
 var MODULE_STORAGE = global.__ark_app__.apps;
 
 /**
- * setImmediate polyfill
- */
-(function (global) {
-    if (!global.setImmediate) global.setImmediate = (function() {
-        var head = { }, tail = head;
-
-        var ID = Math.random();
-        function onmessage(e) {
-            if(e.data != ID) return;
-            head = head.next;
-            var func = head.func;
-            delete head.func;
-            func();
-        }
-
-        if(global.addEventListener) { // IE9+
-            global.addEventListener('message', onmessage);
-        } else { // IE8
-            global.attachEvent('onmessage', onmessage );
-        }
-
-        return function(func) {
-            tail = tail.next = { func: func };
-            global.postMessage(ID, "*");
-        };
-    }());
-})(global || window);
-
-/**
- *
+ * @constructor
  * @param configuration
  * @param dependencies
- * @constructor
  */
 function InhabitModuleBase(configuration, dependencies) {
     if (!configuration) {
@@ -52,8 +22,41 @@ function InhabitModuleBase(configuration, dependencies) {
 
     this.name = this.constructor.name;
     this.deferred = this.$.Deferred();
-    this.content = [];
 }
+
+/**
+ * Start async task that fetches content and return a this.deffered.promise()
+ * @returns {Promise}
+ */
+InhabitModuleBase.prototype.getContent = mustBeOverrided;
+
+/**
+ * Return a Thumbnail URL
+ * @returns {string}
+ */
+InhabitModuleBase.prototype.getThumbnail = mustBeOverrided;
+
+/**
+ * Return a Title
+ * @returns {string}
+ */
+InhabitModuleBase.prototype.getTitle = mustBeOverrided;
+
+/**
+ * @returns {boolean}
+ */
+InhabitModuleBase.prototype.hasContent = mustBeOverrided;
+
+/**
+ * Render content
+ * @return {string}
+ */
+InhabitModuleBase.prototype.display = mustBeOverrided;
+
+/**
+ * ?
+ */
+InhabitModuleBase.prototype.destroy = mustBeOverrided;
 
 /**
  * Store dependencies
@@ -80,29 +83,16 @@ InhabitModuleBase.prototype.configure = function(configuration) {
 };
 
 /**
- * Resolve data
- *
- * @param data
- */
-InhabitModuleBase.prototype.resolve = function (data) {
-    data.next = function () {
-        for (var i = 0; i < data.length; i++) {
-            if (usedContent.indexOf(data[i].id) === -1) {
-                usedContent.push(data[i].id);
-                return data[i];
-            }
-        }
-    };
-
-    this.deferred.resolve(data);
-};
-
-/**
  * Static method for publishing Modules
- * @param module
+ * @static
+ * @param {InhabitModuleBase}
  */
-InhabitModuleBase.publish = function (module) {
-    MODULE_STORAGE.push(module);
+InhabitModuleBase.publish = function (Module) {
+    MODULE_STORAGE.push(Module);
 };
+
+function mustBeOverrided() {
+    throw Error('This method must be overrided.');
+}
 
 module.exports = InhabitModuleBase;
