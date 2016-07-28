@@ -17,11 +17,13 @@ function InhabitModuleBase(configuration, dependencies) {
         throw Error('No dependencies presented.');
     }
 
-    this.configure(configuration)
-        .inject(dependencies);
+    if (!this.configuration) {
+        this.configuration = {};
+    }
 
     this.name = this.constructor.name;
-    this.deferred = this.$.Deferred();
+
+    this.inject(dependencies).configure(configuration);
 }
 
 /**
@@ -77,7 +79,7 @@ InhabitModuleBase.prototype.inject = function (dependencies) {
  * @param configuration
  */
 InhabitModuleBase.prototype.configure = function(configuration) {
-    this.configuration = configuration;
+    this.$.extend(true, this.configuration, configuration);
 
     return this;
 };
