@@ -4,7 +4,7 @@
   "description": "A Base Module class for InHabit.",
   "main": "build/InhabitModuleBase.js",
   "scripts": {
-    "test": "node tasks/test.js",
+    "test": "tape tests/*.spec.js | tap-spec",
     "build": "node tasks/build.js",
     "debug": "DEBUG=true node tasks/build.js"
   },
