@@ -4,6 +4,35 @@ var usedContent = [];
 var MODULE_STORAGE = global.__ark_app__.apps;
 
 /**
+ * setImmediate polyfill
+ */
+(function (global) {
+    if (!global.setImmediate) global.setImmediate = (function() {
+        var head = { }, tail = head;
+
+        var ID = Math.random();
+        function onmessage(e) {
+            if(e.data != ID) return;
+            head = head.next;
+            var func = head.func;
+            delete head.func;
+            func();
+        }
+
+        if(global.addEventListener) { // IE9+
+            global.addEventListener('message', onmessage);
+        } else { // IE8
+            global.attachEvent('onmessage', onmessage );
+        }
+
+        return function(func) {
+            tail = tail.next = { func: func };
+            global.postMessage(ID, "*");
+        };
+    }());
+})(global || window);
+
+/**
  *
  * @param configuration
  * @param dependencies
@@ -25,37 +54,6 @@ function InhabitModuleBase(configuration, dependencies) {
     this.deferred = this.$.Deferred();
     this.content = [];
 }
-
-/**
- * Get Content
- * @returns {*}
- */
-InhabitModuleBase.prototype.getContent = function () {
-    setTimeout(this.getDeliveryMethod(), 1);
-    return this.deferred.promise();
-};
-
-/**
- *
- * @returns {boolean}
- */
-InhabitModuleBase.prototype.hasContent = function () {
-    return !!this.content.length;
-};
-
-/**
- * Return a fetch method
- */
-InhabitModuleBase.prototype.getDeliveryMethod = function () {
-    var deliveryMethod = this.configuration.deliveryMethod.name,
-        deliveryParameters = this.configuration.deliveryMethod;
-
-    if (typeof this[deliveryMethod] !== 'function') {
-        throw Error('No such deliveryMethod: ' + deliveryMethod);
-    }
-
-    return this[deliveryMethod].bind(this, deliveryParameters);
-};
 
 /**
  * Store dependencies

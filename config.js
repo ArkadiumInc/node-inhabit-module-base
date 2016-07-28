@@ -6,7 +6,8 @@ var path = require('path'),
     config = {
         debug: process.env.DEBUG || false,
         source: path.resolve('./src/'),
-        destination: path.resolve('./build/')
+        destination: path.resolve('./build/'),
+        tests: path.resolve('./tests')
     };
 
 module.exports = config;
