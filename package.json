@@ -6,7 +6,8 @@
   "scripts": {
     "test": "tape tests/*.spec.js | tap-spec",
     "build": "node tasks/build.js",
-    "debug": "DEBUG=true node tasks/build.js"
+    "debug": "DEBUG=true node tasks/build.js",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",

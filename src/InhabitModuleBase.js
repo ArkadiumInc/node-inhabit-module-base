@@ -70,6 +70,7 @@ InhabitModuleBase.prototype.inject = function (dependencies) {
     this.handlebars = dependencies.handlebars;
     this.textClassificationService = dependencies.textClassificationService;
     this.searchEngineService = dependencies.searchEngineService;
+    this.events = dependencies.events || { on: console.log.bind(console, 'There is not events') };
 
     return this;
 };
