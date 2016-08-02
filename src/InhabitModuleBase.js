@@ -56,9 +56,10 @@ InhabitModuleBase.prototype.hasContent = mustBeOverrided;
 InhabitModuleBase.prototype.display = mustBeOverrided;
 
 /**
- * ?
+ * Return a Type
+ * @returns {string}
  */
-InhabitModuleBase.prototype.destroy = mustBeOverrided;
+InhabitModuleBase.prototype.getType = mustBeOverrided;
 
 /**
  * Store dependencies
