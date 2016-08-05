@@ -3,7 +3,6 @@
 global.__ark_app__ = { apps: [] };
 
 var tape = require('tape'),
-    InhabitModuleBase = require('../src/InhabitModuleBase'),
     TestModule = require('./TestModule');
 
 

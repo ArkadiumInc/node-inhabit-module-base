@@ -1,4 +1,4 @@
-# inhabit-module-base [![npm version](https://badge.fury.io/js/inhabit-module-base.svg)](https://badge.fury.io/js/inhabit-module-base) [![Inline docs](http://inch-ci.org/github/rand0me/node-inhabit-module-base.svg?branch=master)](http://inch-ci.org/github/rand0me/node-inhabit-module-base)
+# inhabit-module-base [![npm version](https://badge.fury.io/js/inhabit-module-base.svg)](https://badge.fury.io/js/inhabit-module-base) [![Inline docs](http://inch-ci.org/github/rand0me/node-inhabit-module-base.svg?branch=master)](http://inch-ci.org/github/rand0me/node-inhabit-module-base) [![Code Climate](https://codeclimate.com/github/rand0me/node-inhabit-module-base/badges/gpa.svg)](https://codeclimate.com/github/rand0me/node-inhabit-module-base)
 
 A base module for building an InHabit Module.
 
