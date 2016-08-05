@@ -71,7 +71,7 @@ InhabitModuleBase.prototype.inject = function (dependencies) {
     this.handlebars = dependencies.handlebars;
     this.textClassificationService = dependencies.textClassificationService;
     this.searchEngineService = dependencies.searchEngineService;
-    this.events = dependencies.events || { on: console.log.bind(console, 'There is not events') };
+    this.events = dependencies.events || {on: console.log.bind(console, 'There is not events')};
 
     return this;
 };
@@ -80,7 +80,7 @@ InhabitModuleBase.prototype.inject = function (dependencies) {
  * Configure
  * @param configuration
  */
-InhabitModuleBase.prototype.configure = function(configuration) {
+InhabitModuleBase.prototype.configure = function (configuration) {
     this.$.extend(true, this.configuration, configuration);
 
     return this;
@@ -91,7 +91,7 @@ InhabitModuleBase.prototype.configure = function(configuration) {
  * @static
  * @param {InhabitModuleBase}
  */
-InhabitModuleBase.publish = function (Module) {
+InhabitModuleBase.publish = function (Module) {
     MODULE_STORAGE.push(Module);
 };
 
