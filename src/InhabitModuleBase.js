@@ -80,7 +80,7 @@ InhabitModuleBase.prototype.inject = function (dependencies) {
  * @param configuration
  */
 InhabitModuleBase.prototype.configure = function (configuration) {
-    this.$.extend(true, {}, this.configuration, configuration);
+    this.$.extend(true, this.configuration, configuration);
 
     return this;
 };
