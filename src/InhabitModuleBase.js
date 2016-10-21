@@ -71,7 +71,7 @@ InhabitModuleBase.prototype.inject = function (dependencies) {
     this.textClassificationService = dependencies.textClassificationService;
     this.searchEngineService = dependencies.searchEngineService;
     this.events = dependencies.events || {on: console.log.bind(console, 'There is not events')};
-    this.resourcesRoot = dependencies.resourcesRoot || "build/resources/";
+    this.resourcesRoot = dependencies.resourcesRoot || "build/resources";
     return this;
 };
 
