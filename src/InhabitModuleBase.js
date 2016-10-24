@@ -70,7 +70,7 @@ InhabitModuleBase.prototype.inject = function (dependencies) {
     this.handlebars = dependencies.handlebars;
     this.textClassificationService = dependencies.textClassificationService;
     this.searchEngineService = dependencies.searchEngineService;
-    this.events = dependencies.events || InhabitModuleEvents;
+    this.events = dependencies.events || new InhabitModuleEvents();
     this.resourcesRoot = dependencies.resourcesRoot || "build/resources";
     return this;
 };
