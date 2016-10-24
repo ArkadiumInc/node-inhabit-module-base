@@ -21,7 +21,6 @@ function InhabitModuleBase(configuration, dependencies) {
     }
 
     this.name = this.constructor.name;
-    this.showCustomPreloader = true;
     this.inject(dependencies).configure(configuration);
 }
 
@@ -59,6 +58,14 @@ InhabitModuleBase.prototype.display = mustBeOverrided;
  * @returns {string}
  */
 InhabitModuleBase.prototype.getType = mustBeOverrided;
+
+/**
+ * Indicate whether interactive has custom preloader or general one should be used
+ * @returns {boolean}
+ */
+InhabitModuleBase.prototype.hasCustomPreloader = function () {
+    return false;
+};
 
 /**
  * Store dependencies
