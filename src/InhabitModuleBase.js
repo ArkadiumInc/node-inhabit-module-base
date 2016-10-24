@@ -1,7 +1,7 @@
 "use strict";
 
 var MODULE_STORAGE = global.__ark_app__.apps;
-
+var InhabitModuleEvents = require("./InhabitModuleEvents");
 /**
  * @constructor
  * @param configuration
@@ -21,7 +21,7 @@ function InhabitModuleBase(configuration, dependencies) {
     }
 
     this.name = this.constructor.name;
-
+    this.showCustomPreloader = true;
     this.inject(dependencies).configure(configuration);
 }
 
@@ -70,7 +70,7 @@ InhabitModuleBase.prototype.inject = function (dependencies) {
     this.handlebars = dependencies.handlebars;
     this.textClassificationService = dependencies.textClassificationService;
     this.searchEngineService = dependencies.searchEngineService;
-    this.events = dependencies.events || {on: console.log.bind(console, 'There is not events')};
+    this.events = dependencies.events || InhabitModuleEvents;
     this.resourcesRoot = dependencies.resourcesRoot || "build/resources";
     return this;
 };
