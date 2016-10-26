@@ -11,18 +11,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/rand0me/node-inhabit-module-base.git"
+    "url": "git+ssh://git@github.com/ArkadiumInc/node-inhabit-module-base.git"
   },
   "keywords": [
     "InHabit",
     "inhabit"
   ],
-  "author": "rand0me",
+  "author": "ArkadiumInc",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rand0me/node-inhabit-module-base/issues"
+    "url": "https://github.com/ArkadiumInc/node-inhabit-module-base/issues"
   },
-  "homepage": "https://github.com/rand0me/node-inhabit-module-base#readme",
+  "homepage": "https://github.com/ArkadiumInc/node-inhabit-module-base#readme",
   "devDependencies": {
     "babel-core": "^6.11.4",
     "babel-plugin-syntax-async-functions": "^6.8.0",
