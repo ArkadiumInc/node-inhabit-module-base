@@ -98,11 +98,25 @@ InhabitModuleBase.prototype.configure = function (configuration) {
  * @param {InhabitModuleBase}
  */
 InhabitModuleBase.publish = function (Module) {
+    var cfg = locateInhabitCfg();
+
+    if (cfg && cfg.moduleId) {
+        Module.moduleName = cfg.moduleId;
+    }
+
     MODULE_STORAGE.push(Module);
 };
 
 function mustBeOverrided() {
     throw Error('This method must be overrided.');
+}
+
+function locateInhabitCfg() {
+    try {
+        return require('../../../inhabitcfg.json');
+    } catch(e) {
+        return null;
+    }
 }
 
 module.exports = InhabitModuleBase;
