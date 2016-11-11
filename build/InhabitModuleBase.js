@@ -1,5 +1,12 @@
 "use strict";
 
+if (!global.__ark_app__) {
+    global.__ark_app__ = {};
+}
+if (!global.__ark_app__.apps) {
+    global.__ark_app__.apps = [];
+}
+
 var MODULE_STORAGE = global.__ark_app__.apps;
 var InhabitModuleEvents = require("./InhabitModuleEvents");
 /**
