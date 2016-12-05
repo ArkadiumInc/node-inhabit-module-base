@@ -42,7 +42,11 @@ InhabitModuleEvents.prototype =
     /**
      * Trigger this event when users completes cycle and about to start new one
      */
-    cycleEnd: interfaceMethod
+    cycleEnd: interfaceMethod,
+    /**
+     * Trigger this event when you need to refresh advertisement in inhabit widget
+     */
+    refreshAd: interfaceMethod
 
 
 };
