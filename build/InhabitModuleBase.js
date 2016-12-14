@@ -105,8 +105,24 @@ InhabitModuleBase.prototype.configure = function (configuration) {
  * @param {InhabitModuleBase}
  */
 InhabitModuleBase.publish = function (Module) {
+    Module.moduleName = getScriptName();
     MODULE_STORAGE.push(Module);
 };
+
+function getScriptName() {
+    var error,
+        source,
+        lastStackFrameRegex = new RegExp(/.+\/(.*?):\d+(:\d+)*$/),
+        currentStackFrameRegex = new RegExp(/getScriptName \(.+\/(.*):\d+:\d+\)/);
+
+    try {
+        throw new Error();
+    } catch (e) {
+        error = e;
+    }
+
+    if ((source = lastStackFrameRegex.exec(error.stack && error.stack.trim())) && source[1] != "") return source[1].replace(/\.js$/, '');else if (source = currentStackFrameRegex.exec(error.stack && error.stack.trim())) return source[1].replace(/\.js$/, '');else if (error.fileName != undefined) return error.fileName.replace(/\.js$/, '');
+}
 
 function mustBeOverrided() {
     throw Error('This method must be overrided.');
