@@ -85,7 +85,9 @@ InhabitModuleBase.prototype.inject = function (dependencies) {
     this.textClassificationService = dependencies.textClassificationService;
     this.searchEngineService = dependencies.searchEngineService;
     this.events = dependencies.events || new InhabitModuleEvents();
-    this.resourcesRoot = dependencies.resourcesRoot || "build/resources";
+    this.resourcesRoot = dependencies.resourcesRoot || "";
+    this.abTestManager = dependencies.abTestManager;
+    this.logger = dependencies.logger;
     return this;
 };
 
