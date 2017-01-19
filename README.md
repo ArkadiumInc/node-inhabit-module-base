@@ -26,12 +26,12 @@ InhabitModuleBase.publish(MyModule);
 
 You have access to next features of Inhabit through base class:
 
-#####JQuery
+##### JQuery
 ````javascript
     this.$;
 ````
 
-#####Handlebars
+##### Handlebars
 ````javascript
     this.handlebars;
 ````
@@ -112,5 +112,27 @@ Usage:
 
 ##### Events
 ````javascript
-    this.events;
+    this.events
 ````
+Run method this.events.refreshAd() on user click if you want to refresh ad block inside the InHabit, it will fire event:
+````javascript
+this.events.refreshAd
+````
+
+##### ModalPopup
+````javascript
+    this.modalPopup
+````
+
+Open popup window with your custom url, use method:
+````javascritp
+this.modalPopup.open('your url')
+````
+Open terms of service popup window, use method: 
+````javascritp
+this.modalPopup.openTermsOfService()
+````
+
+
+
+
