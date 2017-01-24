@@ -26,22 +26,112 @@ InhabitModuleBase.publish(MyModule);
 
 You have access to next features of Inhabit through base class:
 
-##### JQuery
+### JQuery
 ````javascript
     this.$;
 ````
 
-##### Handlebars
+### Handlebars
 ````javascript
     this.handlebars;
 ````
 
-##### Semantic service 
+### Semantic service 
+This service allows you to grab contextual information about your page for later use.
 ````javascript
     this.textClassificationService; 
 ````
+#### Taxonomy
+**getTaxonomy** method returns promise that results into the array of taxonomy information about this page.
+````javascript
+    this.textClassificationService.getTaxonomy().then(function(taxonomy){
+        
+    })
+````
+where "taxonomy" is array:
+````javascript
+[
+    {
+        "values": [
+            "sports",
+            "football"
+        ],
+        "score": 0.990101
+    },
+    {
+        "values":[
+            "business and industrial",
+            "logistics",
+            "freight train"
+        ],
+        "score":0.36197
+    }
+    ...
+]
+````
+vales in this case are dependent from each other, you should read them like this sports->football; business and industrial->logistics->freight train
+For full list of available taxonomy please look this document [Taxonomy reference](docs/taxonomy.csv)
 
-##### AB tests
+#### Entities
+**getEntities** - method returns promise that results into array of entities relevant to this page.
+````javascript
+    this.textClassificationService.getEntities().then(function(entities){
+        
+    })
+````
+where "entities" is array:
+````javascript
+    {
+        "values": [
+            "Matt Jones"
+        ],
+        "score": 0.82653,
+        "type": "Person"
+    },
+    {
+        "values": [
+            "Coach Jay Gruden"
+        ],
+        "score": 0.668899,
+        "type": "Person",
+        "misc": {
+            "subType": [
+                "FootballPlayer",
+                "SportsOfficial"
+            ],
+            "name": "Jay Gruden"
+        }
+    }
+````
+List of available [types](docs/entity-types.csv) and [sub types](docs/sub-types.csv)
+
+#### Keywords
+**getKeywords** - method returns promise that results into array of keywords, keywords are broader view of text than entities and taxonomy based on words that 
+could be used to describe meaning of the text
+````javascript
+    this.textClassificationService.getKeywords().then(function(keywords){
+        
+    })
+````
+where "keywords" is array:
+````javascript
+[
+    {
+        "values": [
+            "Monday night"
+        ],
+        "score": 0.926018
+    },
+    {
+        "values": [
+            "Coach Jay Gruden"
+        ],
+        "score": 0.746022
+    }
+]
+````
+
+### AB tests
 ````javascript
     this.abTestManager;
 ````
@@ -50,7 +140,7 @@ For example you have property:
 ````javascript
     var myTitle = this.configuration.title;
 ````
-that you recieve from json configuration delivered by Inhabit platform
+that you receive from json configuration delivered by Inhabit platform
 ````JSON
     {
       "modules": [
@@ -95,7 +185,7 @@ If you will reveret your configration to the previous one without AB test in it,
 still work properly. So next time you will need to run abTest, you will need just change configuration.
 
 You can use ABTest manager for any javascript object if you want;
-##### Logger
+### Logger
 ````javascript
     this.logger;
 ````
@@ -110,47 +200,47 @@ Usage:
     this.logger({h: "header", c:'r', type: 'error'}, "console log with header","some additional details can be provided here");
 ````
 
-##### Events
+### Events
 ````javascript
     this.events
 ````
 
-###### Ready
+#### Ready
 Call this method when interactive loaded all required resources and ready to be displayed to the user
 ````javascript
     this.events.ready(message)
 ````
 **message[optional]** - if you need any message attached to the ready event, this message can be later used in analytics dashboard for example
 
-###### Error 
+#### Error 
 Call this method if any error appears in your application. This will help to track them down and make your application better
 ````javascript
     this.events.error(message)
 ````
 **message[optional]** - if you need any message attached to the error event, this message can be later used in analytics dashboard for example
 
-###### InteractionStart
+#### InteractionStart
 Call this method when user performs first interaction with application. This event should be called once per application lifetime
 ````javascript
     this.events.interactionStart(message)
 ````
 **message[optional]** - if you need any message attached to the interactionStart event, this message can be later used in analytics dashboard for example
 
-###### CycleStart
+#### CycleStart
 Call this method when user starts iteration/cycle/sequence of logic in your application
 ````javascript
     this.events.cycleStart(message)
 ````
 **message[optional]** - if you need any message attached to the cycleStart event, this message can be later used in analytics dashboard for example
 
-###### CycleEnd
+#### CycleEnd
 Call this method when user end iteration/cycle/sequence of logic in your application
 ````javascript
     this.events.cycleEnd(message)
 ````
 **message[optional]** - if you need any message attached to the cycleEnd event, this message can be later used in analytics dashboard for example
 
-###### Custom 
+#### Custom 
 You can use this event to propagate any custom messages for analytics purposes 
 ````javascript
     this.events.custom(name, message)
@@ -163,7 +253,7 @@ Run method this.events.refreshAd() on user click if you want to refresh ad block
 this.events.refreshAd
 ````
 
-##### ModalPopup
+### ModalPopup
 ````javascript
     this.modalPopup
 ````
@@ -176,7 +266,3 @@ Open terms of service popup window, use method:
 ````javascritp
 this.modalPopup.openTermsOfService()
 ````
-
-
-
-
