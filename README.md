@@ -2,12 +2,33 @@
 
 A base module for building an InHabit Module.
 
-## Installation
+###TOC
+1. [Installation](#install)
+2. [Usage](#usage)
+3. [JQuery](#jquery)
+4. [Handlebars](#handlebars)
+5. [Semantic service](#semanticservice) 
+    - [Taxonomy](#taxonomy)
+    - [Entities](#enttities)    
+    - [Keywords](#keywords)
+6. [AB tests](#abtests)
+7. [Logger](#logger)
+8. [Events](#events)
+    - [Ready](#ready)
+    - [Error](#error)
+    - [InteractionStart](#interactionstart)
+    - [CycleStart](#cyclestart)
+    - [CycleEnd](#cycleend)
+    - [Custom](#custom)
+9. [Modal popup](#modalpopup)
+
+## Installation<a name="install"></a>
 ```sh
 npm install --save-dev inhabit-module-base
 ```
 
-## Usage ES5
+
+## Usage <a name="usage"></a>
 ```javascript
 var InhabitModuleBase = require('inhabit-module-base');
 
@@ -26,22 +47,22 @@ InhabitModuleBase.publish(MyModule);
 
 You have access to next features of Inhabit through base class:
 
-### JQuery
+### JQuery <a name="jquery"></a>
 ````javascript
     this.$;
 ````
 
-### Handlebars
+### Handlebars<a name="handlebars"></a>
 ````javascript
     this.handlebars;
 ````
 
-### Semantic service 
+### Semantic service <a name="semanticservice"></a>
 This service allows you to grab contextual information about your page for later use.
 ````javascript
     this.textClassificationService; 
 ````
-#### Taxonomy
+#### Taxonomy<a name="taxonomy"></a>
 **getTaxonomy** method returns promise that results into the array of taxonomy information about this page.
 ````javascript
     this.textClassificationService.getTaxonomy().then(function(taxonomy){
@@ -72,7 +93,7 @@ where "taxonomy" is array:
 vales in this case are dependent from each other, you should read them like this sports->football; business and industrial->logistics->freight train
 For full list of available taxonomy please look this document [Taxonomy reference](docs/taxonomy.csv)
 
-#### Entities
+#### Entities<a name="entities"></a>
 **getEntities** - method returns promise that results into array of entities relevant to this page.
 ````javascript
     this.textClassificationService.getEntities().then(function(entities){
@@ -105,7 +126,7 @@ where "entities" is array:
 ````
 List of available [types](docs/entity-types.csv) and [sub types](docs/sub-types.csv)
 
-#### Keywords
+#### Keywords<a name="keywords"></a>
 **getKeywords** - method returns promise that results into array of keywords, keywords are broader view of text than entities and taxonomy based on words that 
 could be used to describe meaning of the text
 ````javascript
@@ -131,7 +152,7 @@ where "keywords" is array:
 ]
 ````
 
-### AB tests
+### AB tests<a name="abtests"></a>
 ````javascript
     this.abTestManager;
 ````
@@ -185,7 +206,7 @@ If you will reveret your configration to the previous one without AB test in it,
 still work properly. So next time you will need to run abTest, you will need just change configuration.
 
 You can use ABTest manager for any javascript object if you want;
-### Logger
+### Logger<a name="logger"></a>
 ````javascript
     this.logger;
 ````
@@ -200,47 +221,47 @@ Usage:
     this.logger({h: "header", c:'r', type: 'error'}, "console log with header","some additional details can be provided here");
 ````
 
-### Events
+### Events<a name="events"></a>
 ````javascript
     this.events
 ````
 
-#### Ready
+#### Ready<a name="ready"></a>
 Call this method when interactive loaded all required resources and ready to be displayed to the user
 ````javascript
     this.events.ready(message)
 ````
 **message[optional]** - if you need any message attached to the ready event, this message can be later used in analytics dashboard for example
 
-#### Error 
+#### Error <a name="error"></a>
 Call this method if any error appears in your application. This will help to track them down and make your application better
 ````javascript
     this.events.error(message)
 ````
 **message[optional]** - if you need any message attached to the error event, this message can be later used in analytics dashboard for example
 
-#### InteractionStart
+#### InteractionStart<a name="interactionstart"></a>
 Call this method when user performs first interaction with application. This event should be called once per application lifetime
 ````javascript
     this.events.interactionStart(message)
 ````
 **message[optional]** - if you need any message attached to the interactionStart event, this message can be later used in analytics dashboard for example
 
-#### CycleStart
+#### CycleStart<a name="cyclestart"></a>
 Call this method when user starts iteration/cycle/sequence of logic in your application
 ````javascript
     this.events.cycleStart(message)
 ````
 **message[optional]** - if you need any message attached to the cycleStart event, this message can be later used in analytics dashboard for example
 
-#### CycleEnd
+#### CycleEnd<a name="cycleend"></a>
 Call this method when user end iteration/cycle/sequence of logic in your application
 ````javascript
     this.events.cycleEnd(message)
 ````
 **message[optional]** - if you need any message attached to the cycleEnd event, this message can be later used in analytics dashboard for example
 
-#### Custom 
+#### Custom <a name="custom"></a>
 You can use this event to propagate any custom messages for analytics purposes 
 ````javascript
     this.events.custom(name, message)
@@ -253,7 +274,7 @@ Run method this.events.refreshAd() on user click if you want to refresh ad block
 this.events.refreshAd
 ````
 
-### ModalPopup
+### ModalPopup<a name="modalpopup"></a>
 ````javascript
     this.modalPopup
 ````
