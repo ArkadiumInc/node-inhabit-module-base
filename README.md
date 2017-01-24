@@ -220,7 +220,10 @@ Usage:
     this.logger({h: "header", c:'r', type: 'error'}, "console log with header");
     this.logger({h: "header", c:'r', type: 'error'}, "console log with header","some additional details can be provided here");
 ````
-
+don't forget to enable DevMode as well 
+````HTML
+<script async="" ... data-ark-log="true" src="//widgetapi-inhabit.as.arkadiumhosted.com/Widget/v1"></script>
+````
 ### Events<a name="events"></a>
 ````javascript
     this.events
