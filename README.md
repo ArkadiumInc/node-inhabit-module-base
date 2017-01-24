@@ -114,6 +114,50 @@ Usage:
 ````javascript
     this.events
 ````
+
+###### Ready
+Call this method when interactive loaded all required resources and ready to be displayed to the user
+````javascript
+    this.events.ready(message)
+````
+**message[optional]** - if you need any message attached to the ready event, this message can be later used in analytics dashboard for example
+
+###### Error 
+Call this method if any error appears in your application. This will help to track them down and make your application better
+````javascript
+    this.events.error(message)
+````
+**message[optional]** - if you need any message attached to the error event, this message can be later used in analytics dashboard for example
+
+###### InteractionStart
+Call this method when user performs first interaction with application. This event should be called once per application lifetime
+````javascript
+    this.events.interactionStart(message)
+````
+**message[optional]** - if you need any message attached to the interactionStart event, this message can be later used in analytics dashboard for example
+
+###### CycleStart
+Call this method when user starts iteration/cycle/sequence of logic in your application
+````javascript
+    this.events.cycleStart(message)
+````
+**message[optional]** - if you need any message attached to the cycleStart event, this message can be later used in analytics dashboard for example
+
+###### CycleEnd
+Call this method when user end iteration/cycle/sequence of logic in your application
+````javascript
+    this.events.cycleEnd(message)
+````
+**message[optional]** - if you need any message attached to the cycleEnd event, this message can be later used in analytics dashboard for example
+
+###### Custom 
+You can use this event to propagate any custom messages for analytics purposes 
+````javascript
+    this.events.custom(name, message)
+````
+**name** - name of the event
+**message[optional]** - if you need any message attached to the custom event, this message can be later used in analytics dashboard for example
+
 Run method this.events.refreshAd() on user click if you want to refresh ad block inside the InHabit, it will fire event:
 ````javascript
 this.events.refreshAd
