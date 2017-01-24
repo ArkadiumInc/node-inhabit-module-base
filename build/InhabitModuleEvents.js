@@ -44,6 +44,10 @@ InhabitModuleEvents.prototype = {
    */
   cycleEnd: interfaceMethod,
   /**
+   * Trigger this event when you need custom event
+   */
+  custom: interfaceMethod,
+  /**
    * Trigger this event when you need to refresh advertisement in inhabit widget
    */
   refreshAd: interfaceMethod
