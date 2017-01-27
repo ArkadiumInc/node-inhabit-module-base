@@ -1,6 +1,6 @@
 {
   "name": "inhabit-module-base",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "A Base Module class for InHabit.",
   "main": "build/index.js",
   "scripts": {
