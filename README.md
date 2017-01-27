@@ -2,7 +2,7 @@
 
 A base module for building an InHabit Module.
 
-###TOC
+### TOC
 1. [Installation](#install)
 2. [Usage](#usage)
 3. [JQuery](#jquery)
