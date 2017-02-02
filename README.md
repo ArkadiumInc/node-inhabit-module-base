@@ -3,24 +3,25 @@
 A base module for building an InHabit Module.
 
 ###TOC
-1. [Installation](#install)
-2. [Usage](#usage)
-3. [JQuery](#jquery)
-4. [Handlebars](#handlebars)
-5. [Semantic service](#semanticservice) 
+* [Installation](#install)
+* [Usage](#usage)
+* [JQuery](#jquery)
+* [Handlebars](#handlebars)
+* [Semantic service](#semanticservice) 
     - [Taxonomy](#taxonomy)
     - [Entities](#enttities)    
     - [Keywords](#keywords)
-6. [AB tests](#abtests)
-7. [Logger](#logger)
-8. [Events](#events)
+* [AB tests](#abtests)
+* [Logger](#logger)
+* [Events](#events)
     - [Ready](#ready)
     - [Error](#error)
     - [InteractionStart](#interactionstart)
     - [CycleStart](#cyclestart)
     - [CycleEnd](#cycleend)
     - [Custom](#custom)
-9. [Modal popup](#modalpopup)
+* [Modal popup](#modalpopup)
+* [Resources root](#resourcesRoot)
 
 ## Installation<a name="install"></a>
 ```sh
@@ -274,7 +275,7 @@ You can use this event to propagate any custom messages for analytics purposes
 
 Run method this.events.refreshAd() on user click if you want to refresh ad block inside the InHabit, it will fire event:
 ````javascript
-this.events.refreshAd
+this.events.refreshAd()
 ````
 
 ### ModalPopup<a name="modalpopup"></a>
@@ -283,10 +284,17 @@ this.events.refreshAd
 ````
 
 Open popup window with your custom url, use method:
-````javascritp
+````javascript
 this.modalPopup.open('your url')
 ````
 Open terms of service popup window, use method: 
-````javascritp
+````javascript
 this.modalPopup.openTermsOfService()
+````
+### Resources root<a name="resourcesRoot"></a>
+
+Provides absolute url to your resources root. Use this to reference all images and other resources you will use in your
+code
+````javascript
+this.resourcesRoot;
 ````
