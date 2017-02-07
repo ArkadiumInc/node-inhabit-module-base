@@ -50,23 +50,23 @@ You have access to next features of Inhabit through base class:
 
 ### JQuery <a name="jquery"></a>
 ````javascript
-    this.$;
+    dependencies.$;
 ````
 
 ### Handlebars<a name="handlebars"></a>
 ````javascript
-    this.handlebars;
+    dependencies.handlebars;
 ````
 
 ### Semantic service <a name="semanticservice"></a>
 This service allows you to grab contextual information about your page for later use.
 ````javascript
-    this.textClassificationService; 
+    dependencies.textClassificationService; 
 ````
 #### Taxonomy<a name="taxonomy"></a>
 **getTaxonomy** method returns promise that results into the array of taxonomy information about this page.
 ````javascript
-    this.textClassificationService.getTaxonomy().then(function(taxonomy){
+    dependencies.textClassificationService.getTaxonomy().then(function(taxonomy){
         
     })
 ````
@@ -97,7 +97,7 @@ For full list of available taxonomy please look this document [Taxonomy referenc
 #### Entities<a name="entities"></a>
 **getEntities** - method returns promise that results into array of entities relevant to this page.
 ````javascript
-    this.textClassificationService.getEntities().then(function(entities){
+    dependencies.textClassificationService.getEntities().then(function(entities){
         
     })
 ````
@@ -131,7 +131,7 @@ List of available [types](docs/entity-types.csv) and [sub types](docs/sub-types.
 **getKeywords** - method returns promise that results into array of keywords, keywords are broader view of text than entities and taxonomy based on words that 
 could be used to describe meaning of the text
 ````javascript
-    this.textClassificationService.getKeywords().then(function(keywords){
+    dependencies.textClassificationService.getKeywords().then(function(keywords){
         
     })
 ````
@@ -155,12 +155,12 @@ where "keywords" is array:
 
 ### AB tests<a name="abtests"></a>
 ````javascript
-    this.abTestManager;
+    dependencies.abTestManager;
 ````
 AB test manager allows you to extend your object properties and add AB test support for them
 For example you have property:
 ````javascript
-    var myTitle = this.configuration.title;
+    var myTitle = configuration.title;
 ````
 that you receive from json configuration delivered by Inhabit platform
 ````JSON
@@ -200,7 +200,7 @@ If you want to AB test this property, simply change you json to this
 ````
 And then at your code:
 ````javascript
-    var myTitle = this.abTestManager.getSetting(this.configuration.title);
+    var myTitle = dependencies.abTestManager.getSetting(configuration.title);
 ````
 That's it now AB test will automatically set proper value based on you weights
 If you will reveret your configration to the previous one without AB test in it, there no need to change code, it will 
@@ -209,7 +209,7 @@ still work properly. So next time you will need to run abTest, you will need jus
 You can use ABTest manager for any javascript object if you want;
 ### Logger<a name="logger"></a>
 ````javascript
-    this.logger;
+     dependencies.logger;
 ````
 Logger - built-in logger can be enabled in production through specific configuration, allows you debug your application in production.
 Logger logs to browser console and enabled by default in dev environment, while disabled in production. Using this logger allow you to keep
@@ -217,9 +217,9 @@ all your logging code and be silent in production environment
 
 Usage:
 ````javascript
-    this.logger("simple console log");
-    this.logger({h: "header", c:'r', type: 'error'}, "console log with header");
-    this.logger({h: "header", c:'r', type: 'error'}, "console log with header","some additional details can be provided here");
+    dependencies.logger("simple console log");
+    dependencies.logger({h: "header", c:'r', type: 'error'}, "console log with header");
+    dependencies.logger({h: "header", c:'r', type: 'error'}, "console log with header","some additional details can be provided here");
 ````
 don't forget to enable DevMode as well 
 ````HTML
@@ -227,48 +227,48 @@ don't forget to enable DevMode as well
 ````
 ### Events<a name="events"></a>
 ````javascript
-    this.events
+    dependencies.events
 ````
 
 #### Ready<a name="ready"></a>
 Call this method when interactive loaded all required resources and ready to be displayed to the user
 ````javascript
-    this.events.ready(message)
+    dependencies.events.ready(message)
 ````
 **message[optional]** - if you need any message attached to the ready event, this message can be later used in analytics dashboard for example
 
 #### Error <a name="error"></a>
 Call this method if any error appears in your application. This will help to track them down and make your application better
 ````javascript
-    this.events.error(message)
+    dependencies.events.error(message)
 ````
 **message[optional]** - if you need any message attached to the error event, this message can be later used in analytics dashboard for example
 
 #### InteractionStart<a name="interactionstart"></a>
 Call this method when user performs first interaction with application. This event should be called once per application lifetime
 ````javascript
-    this.events.interactionStart(message)
+    dependencies.events.interactionStart(message)
 ````
 **message[optional]** - if you need any message attached to the interactionStart event, this message can be later used in analytics dashboard for example
 
 #### CycleStart<a name="cyclestart"></a>
 Call this method when user starts iteration/cycle/sequence of logic in your application
 ````javascript
-    this.events.cycleStart(message)
+    dependencies.events.cycleStart(message)
 ````
 **message[optional]** - if you need any message attached to the cycleStart event, this message can be later used in analytics dashboard for example
 
 #### CycleEnd<a name="cycleend"></a>
 Call this method when user end iteration/cycle/sequence of logic in your application
 ````javascript
-    this.events.cycleEnd(message)
+    dependencies.events.cycleEnd(message)
 ````
 **message[optional]** - if you need any message attached to the cycleEnd event, this message can be later used in analytics dashboard for example
 
 #### Custom <a name="custom"></a>
 You can use this event to propagate any custom messages for analytics purposes 
 ````javascript
-    this.events.custom(name, message)
+    dependencies.events.custom(name, message)
 ````
 **name** - name of the event
 **message[optional]** - if you need any message attached to the custom event, this message can be later used in analytics dashboard for example
@@ -280,21 +280,21 @@ this.events.refreshAd()
 
 ### ModalPopup<a name="modalpopup"></a>
 ````javascript
-    this.modalPopup
+    dependencies.modalPopup
 ````
 
 Open popup window with your custom url, use method:
 ````javascript
-this.modalPopup.open('your url')
+dependencies.modalPopup.open('your url')
 ````
 Open terms of service popup window, use method: 
 ````javascript
-this.modalPopup.openTermsOfService()
+dependencies.modalPopup.openTermsOfService()
 ````
 ### Resources root<a name="resourcesRoot"></a>
 
 Provides absolute url to your resources root. Use this to reference all images and other resources you will use in your
 code
 ````javascript
-this.resourcesRoot;
+dependencies.resourcesRoot;
 ````
