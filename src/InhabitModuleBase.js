@@ -107,17 +107,17 @@ InhabitModuleBase.prototype.configure = function (configuration) {
  * @param {InhabitModuleBase}
  */
 InhabitModuleBase.publish = function (Module) {
-    Module.moduleName = getScriptName();
+    Module.moduleName = InhabitModuleBase.getScriptName();
     MODULE_STORAGE.push(Module);
 };
 
 
 
-function getScriptName() {
+InhabitModuleBase.getScriptName = function() {
     var error
       , source
       , lastStackFrameRegex = new RegExp(/.+\/(.*?):\d+(:\d+)*$/)
-      , currentStackFrameRegex = new RegExp(/\(.+\/(.*):\d+:\d+\)/);
+      , currentStackFrameRegex = new RegExp(/getScriptName \(.+\/(.*):\d+:\d+\)/);
 
     try { throw new Error(); }
     catch (e) { error = e; }
