@@ -117,7 +117,7 @@ function getScriptName() {
     var error
       , source
       , lastStackFrameRegex = new RegExp(/.+\/(.*?):\d+(:\d+)*$/)
-      , currentStackFrameRegex = new RegExp(/getScriptName \(.+\/(.*):\d+:\d+\)/);
+      , currentStackFrameRegex = new RegExp(/\(.+\/(.*):\d+:\d+\)/);
 
     try { throw new Error(); }
     catch (e) { error = e; }
