@@ -28,7 +28,6 @@ function InhabitModuleBase(configuration, dependencies) {
     }
 
     this.name = this.constructor.name;
-    this.type = 'factive'; // 99% of modules will have the factive type
     this.inject(dependencies).configure(configuration);
 }
 
@@ -130,7 +129,7 @@ InhabitModuleBase.getScriptName = function() {
         return source[1].replace(/\.js$/, '');
     else if(error.fileName != undefined)
         return error.fileName.replace(/\.js$/, '');
-}
+};
 
 function mustBeOverridden() {
     throw Error('This method must be overridden.');
