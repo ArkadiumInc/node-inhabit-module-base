@@ -28,6 +28,7 @@ function InhabitModuleBase(configuration, dependencies) {
     }
 
     this.name = this.constructor.name;
+    this.type = 'factive'; // 99% of modules will have the factive type
     this.inject(dependencies).configure(configuration);
 }
 
@@ -35,36 +36,36 @@ function InhabitModuleBase(configuration, dependencies) {
  * Start async task that fetches content and return a this.deffered.promise()
  * @returns {Promise}
  */
-InhabitModuleBase.prototype.getContent = mustBeOverrided;
+InhabitModuleBase.prototype.getContent = mustBeOverridden;
 
 /**
  * Return a Thumbnail URL
  * @returns {string}
  */
-InhabitModuleBase.prototype.getThumbnail = mustBeOverrided;
+InhabitModuleBase.prototype.getThumbnail = mustBeOverridden;
 
 /**
  * Return a Title
  * @returns {string}
  */
-InhabitModuleBase.prototype.getTitle = mustBeOverrided;
+InhabitModuleBase.prototype.getTitle = mustBeOverridden;
 
 /**
  * @returns {boolean}
  */
-InhabitModuleBase.prototype.hasContent = mustBeOverrided;
+InhabitModuleBase.prototype.hasContent = mustBeOverridden;
 
 /**
  * Render content
  * @return {string}
  */
-InhabitModuleBase.prototype.display = mustBeOverrided;
+InhabitModuleBase.prototype.display = mustBeOverridden;
 
 /**
  * Return a Type
  * @returns {string}
  */
-InhabitModuleBase.prototype.getType = mustBeOverrided;
+InhabitModuleBase.prototype.getType = mustBeOverridden;
 
 /**
  * Indicate whether interactive has custom preloader or general one should be used
@@ -88,6 +89,7 @@ InhabitModuleBase.prototype.inject = function (dependencies) {
     this.resourcesRoot = dependencies.resourcesRoot || "";
     this.abTestManager = dependencies.abTestManager;
     this.logger = dependencies.logger;
+    this.commander = dependencies.commander;
     return this;
 };
 
@@ -130,8 +132,8 @@ InhabitModuleBase.getScriptName = function() {
         return error.fileName.replace(/\.js$/, '');
 }
 
-function mustBeOverrided() {
-    throw Error('This method must be overrided.');
+function mustBeOverridden() {
+    throw Error('This method must be overridden.');
 }
 
 module.exports = InhabitModuleBase;
