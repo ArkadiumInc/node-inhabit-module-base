@@ -62,6 +62,8 @@ You have access to next features of Inhabit through base class:
 This service allows you to grab contextual information about your page for later use.
 ````javascript
     dependencies.textClassificationService; 
+    //information about url that was classified can be achieved from this property
+    dependencies.textClassificationService.currentUrl
 ````
 #### Taxonomy<a name="taxonomy"></a>
 **getTaxonomy** method returns promise that results into the array of taxonomy information about this page.
@@ -69,6 +71,7 @@ This service allows you to grab contextual information about your page for later
     dependencies.textClassificationService.getTaxonomy().then(function(taxonomy){
         
     })
+    
 ````
 where "taxonomy" is array:
 ````javascript
