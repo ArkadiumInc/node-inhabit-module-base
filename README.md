@@ -5,8 +5,6 @@ A base module for building an InHabit Module.
 ###TOC
 * [Installation](#install)
 * [Usage](#usage)
-* [JQuery](#jquery)
-* [Handlebars](#handlebars)
 * [Semantic service](#semanticservice) 
     - [Taxonomy](#taxonomy)
     - [Entities](#enttities)    
@@ -47,16 +45,6 @@ InhabitModuleBase.publish(MyModule);
 ```
 
 You have access to next features of Inhabit through base class:
-
-### JQuery <a name="jquery"></a>
-````javascript
-    dependencies.$;
-````
-
-### Handlebars<a name="handlebars"></a>
-````javascript
-    dependencies.handlebars;
-````
 
 ### Semantic service <a name="semanticservice"></a>
 This service allows you to grab contextual information about your page for later use.
