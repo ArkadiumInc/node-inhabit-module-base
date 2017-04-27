@@ -2,7 +2,7 @@
 
 A base module for building an InHabit Module.
 
-###TOC
+### TOC
 * [Installation](#install)
 * [Usage](#usage)
 * [Semantic service](#semanticservice) 
