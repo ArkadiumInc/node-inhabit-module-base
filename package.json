@@ -7,8 +7,7 @@
     "commit": "git-cz",
     "release": "standard-version",
     "test": "tape tests/*.spec.js | tap-spec",
-    "build": "node tasks/build.js",
-    "debug": "DEBUG=true node tasks/build.js",
+    "build": "tsc",
     "prepublish": "npm run build"
   },
   "repository": {
@@ -26,15 +25,12 @@
   },
   "homepage": "https://github.com/ArkadiumInc/node-inhabit-module-base#readme",
   "devDependencies": {
-    "babel-core": "^6.11.4",
-    "babel-plugin-syntax-async-functions": "^6.8.0",
-    "babel-plugin-transform-async-to-generator": "^6.8.0",
-    "babel-preset-es2015": "^6.9.0",
     "commitizen": "^2.9.5",
     "cz-conventional-changelog": "^1.2.0",
     "standard-version": "^4.0.0",
     "tap-spec": "^4.1.1",
-    "tape": "^4.6.0"
+    "tape": "^4.6.0",
+    "typescript": "^2.3.2"
   },
   "config": {
     "commitizen": {

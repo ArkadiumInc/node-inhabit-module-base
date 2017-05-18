@@ -1,4 +1,4 @@
-var InhabitModuleBase = require('../src/InhabitModuleBase');
+var InhabitModuleBase = require('../build/InhabitModuleBase.js').InhabitModuleBase;
 
 var TestModule = function (configuration, dependencies) {
     InhabitModuleBase.call(this, configuration, dependencies);
