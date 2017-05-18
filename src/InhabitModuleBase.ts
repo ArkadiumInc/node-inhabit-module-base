@@ -55,36 +55,48 @@ export class InhabitModuleBase {
      * Start async task that fetches content and return a this.deffered.promise()
      * @returns {Promise}
      */
-    public getContent = mustBeOverridden;
+    public getContent() {
+        mustBeOverridden()
+    }
 
     /**
      * Return a Thumbnail URL
      * @returns {string}
      */
-    public getThumbnail = mustBeOverridden;
+    public getThumbnail() {
+        mustBeOverridden()
+    }
 
     /**
      * Return a Title
      * @returns {string}
      */
-    public getTitle = mustBeOverridden;
+    public getTitle() {
+        mustBeOverridden()
+    }
 
     /**
      * @returns {boolean}
      */
-    public hasContent = mustBeOverridden;
+    public hasContent() {
+        mustBeOverridden()
+    }
 
     /**
      * Render content
      * @return {string}
      */
-    public display = mustBeOverridden;
+    public display() {
+        mustBeOverridden()
+    }
 
     /**
      * Return a Type
      * @returns {string}
      */
-    public getType = mustBeOverridden;
+    public getType() {
+        mustBeOverridden()
+    }
 
     /**
      * Indicate whether interactive has custom preloader or general one should be used
@@ -118,7 +130,6 @@ export class InhabitModuleBase {
         this.$.extend(true, this.configuration, configuration);
         return this;
     }
-
 
     /**
      * Static method for publishing Modules
