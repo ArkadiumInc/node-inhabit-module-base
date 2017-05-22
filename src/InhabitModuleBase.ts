@@ -76,13 +76,6 @@ export class InhabitModuleBase {
     }
 
     /**
-     * @returns {boolean}
-     */
-    public hasContent() {
-        mustBeOverridden()
-    }
-
-    /**
      * Render content
      * @return {string}
      */
