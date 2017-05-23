@@ -1,11 +1,11 @@
 {
   "name": "inhabit-module-base",
-  "version": "1.4.7",
+  "version": "1.5.0-alpha.0",
   "description": "A Base Module class for InHabit.",
   "main": "build/index.js",
   "scripts": {
     "commit": "git-cz",
-    "release": "standard-version",
+    "release": "standard-version --prerelease alpha",
     "test": "tape tests/*.spec.js | tap-spec",
     "build": "tsc",
     "prepublish": "npm run build"
