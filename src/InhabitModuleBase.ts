@@ -104,7 +104,7 @@ export class InhabitModuleBase {
      * @param dependencies
      * @returns {InhabitModuleBase}
      */
-    public inject(dependencies) {
+    protected inject(dependencies) {
         this.$ = dependencies.$;
         this.handlebars = dependencies.handlebars;
         this.textClassificationService = dependencies.textClassificationService;
@@ -119,7 +119,7 @@ export class InhabitModuleBase {
      * Configure
      * @param configuration
      */
-    public configure(configuration) {
+    protected configure(configuration) {
         this.$.extend(true, this.configuration, configuration);
         return this;
     }
