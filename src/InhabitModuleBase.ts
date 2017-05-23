@@ -1,3 +1,5 @@
+import * as extend from 'extend';
+
 import { InhabitModuleEvents }          from './InhabitModuleEvents';
 import { Logger }                       from './Logger';
 import { ABTestManager }                from './ABTestManager';
@@ -48,7 +50,8 @@ export class InhabitModuleBase {
         }
 
         this.name = this.constructor.name;
-        this.inject(dependencies).configure(configuration);
+        extend(this, dependencies);
+        extend(true, this.configuration, configuration);
     }
 
     /**
@@ -97,31 +100,6 @@ export class InhabitModuleBase {
      */
     public hasCustomPreloader() {
         return false;
-    }
-
-    /**
-     * Store dependencies
-     * @param dependencies
-     * @returns {InhabitModuleBase}
-     */
-    protected inject(dependencies) {
-        this.$ = dependencies.$;
-        this.handlebars = dependencies.handlebars;
-        this.textClassificationService = dependencies.textClassificationService;
-        this.events = dependencies.events;
-        this.resourcesRoot = dependencies.resourcesRoot || "";
-        this.abTestManager = dependencies.abTestManager;
-        this.logger = dependencies.logger;
-        return this;
-    }
-
-    /**
-     * Configure
-     * @param configuration
-     */
-    protected configure(configuration) {
-        this.$.extend(true, this.configuration, configuration);
-        return this;
     }
 
     /**
