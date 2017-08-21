@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/ArkadiumInc/node-inhabit-module-base/compare/v1.5.0-alpha.3...v1.5.0) (2017-08-21)
+
+
+### Features
+
+* **TextClassificationService:** New version added (v2) ([27d275c](https://github.com/ArkadiumInc/node-inhabit-module-base/commit/27d275c))
+
+
+
 <a name="1.5.0-alpha.3"></a>
 # [1.5.0-alpha.3](https://github.com/ArkadiumInc/node-inhabit-module-base/compare/v1.5.0-alpha.2...v1.5.0-alpha.3) (2017-07-17)
 
