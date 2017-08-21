@@ -144,6 +144,16 @@ where "keywords" is array:
 ]
 ````
 
+#### V2 <a name="semantic_v2"></a>
+**getTextClassification** - method returns promise that results into array of requested classification.
+````javascript
+    this.textClassificationService.getTextClassification(
+        "Watson"
+      , "Taxonomy"
+      , this.textClassificationService.V2
+    ).then(taxonomy => this.log(taxonomy));
+````
+
 ### AB tests<a name="abtests"></a>
 ````javascript
     dependencies.abTestManager;
