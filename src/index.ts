@@ -13,6 +13,10 @@ import {
 
 declare const global: any;
 
+export interface IInhabitAPI extends IInhabitAPI {
+    _dependencies: IInhabitAPI;
+}
+
 export abstract class InhabitFactiveBase<T> implements IInhabitAPI {
 
     public static moduleName: string;
