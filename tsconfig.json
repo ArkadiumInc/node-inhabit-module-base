@@ -1,12 +1,17 @@
 {
   "compilerOptions": {
     "outDir": "./build",
-    "module": "commonjs",
-    "lib": [
-      "es2015"
-    ],
+    "target": "es5",
+    "lib": [ "es5", "es2015", "dom" ],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "declaration": true,
-    "target": "es5"
   },
   "include": [
     "./src/index.ts"
