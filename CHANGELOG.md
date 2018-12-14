@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/ArkadiumInc/node-inhabit-module-base/compare/v1.5.0-alpha.3...v2.0.0) (2018-12-14)
+
+
+### Features
+
+* **API:** Add Extensions API ([51dce66](https://github.com/ArkadiumInc/node-inhabit-module-base/commit/51dce66))
+
+
+### BREAKING CHANGES
+
+* **API:** Drop TextClassificationService v1, jQuery and Handlebars
+
+
+
 <a name="1.5.0"></a>
 # [1.5.0](https://github.com/ArkadiumInc/node-inhabit-module-base/compare/v1.5.0-alpha.3...v1.5.0) (2018-12-14)
 
