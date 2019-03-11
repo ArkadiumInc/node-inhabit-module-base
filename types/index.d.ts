@@ -3,8 +3,11 @@ type SecondArgument<T> = T extends (arg1: any, arg2: infer U, ...args: any[]) =>
 // imports
 import "./betting";
 import { BettingModule } from "betting";
-type BettingRender = typeof BettingModule.prototype.render;
+
+type Options<T>    = T extends { initialize: (arg1: any, arg2: infer U) => any } ? U : never;
+type BettingOpts   = Options<BettingModule>;
+type BettingInit   = typeof BettingModule.prototype.initialize;
 
 export interface IExtensions {
-    betting(cfg: SecondArgument<BettingRender>): void;
+    betting(cfg: Options<BettingModule>): Promise<BettingModule>;
 }

@@ -4,7 +4,8 @@ declare module 'betting' {
     import { IBettingConfig } from "betting/api/IBettingConfig";
     import { IBettingModule } from "betting/api/IBettingModule";
     export class BettingModule implements IBettingModule {
-        render(container: HTMLElement, config: IBettingConfig): void;
+        initialize(container: HTMLElement, config: IBettingConfig): void;
+        show(): Promise<void>;
     }
 }
 
@@ -12,22 +13,27 @@ declare module 'betting/api/IBettingConfig' {
     import { IAnalytics } from "betting/api/IAnalytics";
     export interface IBettingConfig {
         debug: boolean;
+        maxWidth: number;
         locale: string;
-        assetsUrl: string;
-        teams: string[];
-        colors: ITeamColor[];
+        teams: ITeam[];
         analytics: IAnalytics;
+        preferredBookmakers: IBookmaker[];
     }
-    export interface ITeamColor {
-        teamId: string;
+    export interface ITeam {
+        id: string;
         colors: string[];
+    }
+    export interface IBookmaker {
+        id: string;
+        referId: string;
     }
 }
 
 declare module 'betting/api/IBettingModule' {
     import { IBettingConfig } from "betting/api/IBettingConfig";
     export interface IBettingModule {
-        render(container: HTMLElement, config: IBettingConfig): void;
+        initialize(container: HTMLElement, config: IBettingConfig): void;
+        show(): Promise<void>;
     }
 }
 
