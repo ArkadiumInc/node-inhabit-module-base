@@ -1,4 +1,4 @@
-import * as extend from 'extend';
+import * as extend from 'xtend';
 
 import { Logger }                       from './Logger';
 import { ABTestManager }                from './ABTestManager';
