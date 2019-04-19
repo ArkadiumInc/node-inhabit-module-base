@@ -26,6 +26,8 @@ export interface IModuleEvents {
     error(msg: string): void;
     refreshAd(msg: string): void;
     custom(name: string, msg: string): void;
+    playAgain(): void;
+    showBest(): void;
 }
 
 export interface ILogger {
