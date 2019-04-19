@@ -2,8 +2,11 @@
   "name": "inhabit-module-base",
   "version": "1.7.0-alpha.1",
   "description": "A Base Module class for InHabit.",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "build"
+  ],
   "scripts": {
     "commit": "git-cz",
     "release": "standard-version --prerelease alpha",
