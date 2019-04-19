@@ -1,2 +1,2 @@
-export { InhabitModuleBase as InhabitModuleBase }       from './InhabitModuleBase';
-export { InhabitModuleEvents as InhabitModuleEvents }   from './InhabitModuleEvents';
+export { InhabitModuleBase as InhabitModuleBase } from './InhabitModuleBase';
+export { IModuleEvents as InhabitModuleEvents }   from './interfaces';

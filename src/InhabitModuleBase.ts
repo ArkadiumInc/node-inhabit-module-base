@@ -1,12 +1,13 @@
-import * as extend from 'extend';
+import * as extend from 'xtend';
 
-import { InhabitModuleEvents }          from './InhabitModuleEvents';
 import { Logger }                       from './Logger';
 import { ABTestManager }                from './ABTestManager';
 import { ModuleManager }                from './ModuleManager';
 import { TextClassificationService }    from './TextClassificationService';
 
-declare let global;
+import { IModuleEvents, IFactiveConstructor, IInhabitAPI } from './interfaces';
+
+declare let global: any;
 
 if (!global.__ark_app__) {
     global.__ark_app__ = {};
@@ -28,19 +29,19 @@ export class InhabitModuleBase {
     /**
      * @deprecated since 1.4.7
      */
-    $;
+    $: any;
     /**
      * @deprecated since 1.4.7
      */
-    handlebars;
+    handlebars: any;
     textClassificationService: TextClassificationService;
-    events: InhabitModuleEvents;
+    events: IModuleEvents;
     resourcesRoot: string;
     abTestManager: ABTestManager;
     moduleManager: ModuleManager;
     logger: Logger;
 
-    constructor(configuration, dependencies) {
+    constructor(configuration: any, dependencies: IInhabitAPI) {
         if (!configuration) {
             throw Error('No configuration presented.');
         }
@@ -107,7 +108,7 @@ export class InhabitModuleBase {
      * @static
      * @param Module {InhabitModuleBase}
      */
-    public static publish(Module) {
+    public static publish(Module: IFactiveConstructor) {
         Module.moduleName = InhabitModuleBase.getScriptName();
         MODULE_STORAGE.push(Module);
     }
